@@ -1,0 +1,337 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* variables */
+  --primary-color-dark: #000000;
+  --primary-color-gray: #434343;
+  --primary-color-light: #ffffff;
+  --primary-color-heart: #ea2027;
+  --primary-color-link: #008cff;
+  --primary-line: 1px solid var(--primary-color-gray);
+}
+
+#root {
+  max-width: 1000px;
+  margin: auto;
+}
+
+/* 버튼 관련 */
+button {
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.btn-full-width {
+  width: 100%;
+  height: 40px;
+  font-size: 16px;
+}
+
+.btn-big {
+  width: 300px;
+  height: 70px;
+  font-size: 50px;
+}
+
+.btn-medium {
+  width: 120px;
+  height: 60px;
+  font-size: 35px;
+}
+
+.btn-small {
+  width: 90px;
+  height: 40px;
+  font-size: 20px;
+}
+
+/* 배경 관련 */
+.bg-dark {
+  background-color: var(--primary-color-dark);
+  color: var(--primary-color-light);
+}
+
+.bg-gray {
+  background-color: var(--primary-color-gray);
+  color: var(--primary-color-light);
+}
+
+.bg-light {
+  background-color: var(--primary-color-light);
+  color: var(--primary-color-dark);
+}
+
+.bg-img-kakao {
+  background-image: url("/icons/kakao.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* 프로필 관련 */
+.profile {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 50%;
+}
+
+.profile-medium {
+  width: 100px;
+  height: 100px;
+}
+
+.profile-small {
+  width: 50px;
+  height: 50px;
+}
+
+/* 절취선 */
+.bottom-line {
+  border-bottom: var(--primary-line);
+}
+
+/* 텍스트 있는 절취선 */
+.text-on-line {
+  min-width: 320px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--primary-color-gray);
+  font-size: 30px;
+}
+
+.text-on-line::before,
+.text-on-line::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background-color: var(--primary-color-gray);
+}
+
+/* input 관련 */
+.input-big-border {
+  padding: 0 10px;
+  width: 300px;
+  height: 70px;
+  font-size: 25px;
+  border-radius: 10px;
+}
+
+.input-medium {
+  padding: 0 10px;
+  width: 300px;
+  height: 40px;
+  border-radius: 10px;
+}
+
+/* 하트 관련 */
+.icon-heart-fill {
+  background-image: url('/icons/heart-fill.png');
+  width: 30px;
+  height: 30px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+.icon-heart-empty {
+  background-image: url('/icons/heart-empty.png');
+  width: 30px;
+  height: 30px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+/* 삭제 아이콘 */
+.icon-delete {
+  background-image: url('/icons/btn-delete.png');
+  width: 25px;
+  height: 30px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+/* 링크 */
+.link {
+  color: var(--primary-color-link);
+  cursor: pointer;
+}* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* variables */
+  --primary-color-dark: #000000;
+  --primary-color-gray: #434343;
+  --primary-color-light: #ffffff;
+  --primary-color-heart: #ea2027;
+  --primary-color-link: #008cff;
+  --primary-line: 1px solid var(--primary-color-gray);
+}
+
+#root {
+  max-width: 1000px;
+  margin: auto;
+}
+
+/* 버튼 관련 */
+button {
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.btn-full-width {
+  width: 100%;
+  height: 40px;
+  font-size: 16px;
+}
+
+.btn-big {
+  width: 300px;
+  height: 70px;
+  font-size: 50px;
+}
+
+.btn-medium {
+  width: 120px;
+  height: 60px;
+  font-size: 35px;
+}
+
+.btn-small {
+  width: 90px;
+  height: 40px;
+  font-size: 20px;
+}
+
+/* 배경 관련 */
+.bg-dark {
+  background-color: var(--primary-color-dark);
+  color: var(--primary-color-light);
+}
+
+.bg-gray {
+  background-color: var(--primary-color-gray);
+  color: var(--primary-color-light);
+}
+
+.bg-light {
+  background-color: var(--primary-color-light);
+  color: var(--primary-color-dark);
+}
+
+.bg-img-kakao {
+  background-image: url("/icons/kakao.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* 프로필 관련 */
+.profile {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 50%;
+}
+
+.profile-medium {
+  width: 100px;
+  height: 100px;
+}
+
+.profile-small {
+  width: 50px;
+  height: 50px;
+}
+
+/* 절취선 */
+.bottom-line {
+  border-bottom: var(--primary-line);
+}
+
+/* 텍스트 있는 절취선 */
+.text-on-line {
+  min-width: 320px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--primary-color-gray);
+  font-size: 30px;
+}
+
+.text-on-line::before,
+.text-on-line::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background-color: var(--primary-color-gray);
+}
+
+/* input 관련 */
+.input-big-border {
+  padding: 0 10px;
+  width: 300px;
+  height: 70px;
+  font-size: 25px;
+  border-radius: 10px;
+}
+
+.input-medium {
+  padding: 0 10px;
+  width: 300px;
+  height: 40px;
+  border-radius: 10px;
+}
+
+/* 하트 관련 */
+.icon-heart-fill {
+  background-image: url('/icons/heart-fill.png');
+  width: 30px;
+  height: 30px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+.icon-heart-empty {
+  background-image: url('/icons/heart-empty.png');
+  width: 30px;
+  height: 30px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+/* 삭제 아이콘 */
+.icon-delete {
+  background-image: url('/icons/btn-delete.png');
+  width: 25px;
+  height: 30px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+/* 링크 */
+.link {
+  color: var(--primary-color-link);
+  cursor: pointer;
+}

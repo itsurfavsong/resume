@@ -1,0 +1,85 @@
+/* src/components/About.css */
+.about-section {
+  padding: 100px 0;
+  text-align: center;
+  position: relative;
+  z-index: 10;
+  background-color: var(--background-dark);
+  color: var(--text-light);
+}
+
+.about-content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.section-title {
+  font-size: 3em;
+  margin-bottom: 40px;
+  background: linear-gradient(to right, var(--accent-blue-start), var(--accent-blue-end));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  position: relative;
+}
+
+.section-title::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(to right, var(--accent-blue-start), var(--accent-blue-end));
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+
+.about-description {
+  font-size: 1.1rem;
+  line-height: 1.2;
+  margin-bottom: 10px;
+  color: var(--text-gray);
+  text-align: left;
+  padding-left: 100px;
+}
+
+.about-image {
+  margin: 40px auto;
+  max-width: 60%;
+  text-align: center;
+}
+
+.about-image img {
+  max-width: 100%; /* Ensure image is not wider than its container */
+  height: auto; /* Maintain aspect ratio */
+  border-radius: 10px; /* Optional: adds a nice touch */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Optional: adds depth */
+  transition: transform 0.3s ease;
+}
+
+.about-image img:hover {
+  transform: scale(1.03);
+}
+
+.about-formula {
+  font-size: 1.6rem;
+  font-weight: bold;
+  margin-bottom: 30px;
+  color: var(--accent-blue-start);
+}
+
+.about-block {
+  margin-bottom: 35px;
+}
+
+
+@media (max-width: 768px) {
+  .about-image img {
+    max-width: 90%; /* Smaller on mobile */
+  }
+
+  .about-description {
+    padding: 0px 0px 0px 0px;
+    font-size: 1rem;
+  }
+}
