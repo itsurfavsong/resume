@@ -1,6 +1,7 @@
 import React from "react";
 import "./About.css";
 import { aboutSections } from "../contants/about.constants";
+import languageGraph from "../assets/language-graph.png";
 
 const About: React.FC = () => {
   return (
@@ -10,7 +11,7 @@ const About: React.FC = () => {
         <h2 className="section-title">About Me</h2>
 
         <div className="about-image">
-          <img src="src/assets/language-graph.png" alt="Language Journey Graph" />
+          <img src={languageGraph} alt="Language Journey Graph" />
         </div>
 
         <h3 className="about-formula">f(송보미) = 언어</h3>
