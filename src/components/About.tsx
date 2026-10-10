@@ -20,11 +20,9 @@ const About: React.FC = () => {
 
         {aboutSections[lang].map((section, index) => (
           <div key={index} className="about-block">
-            {section.texts.map((text, i) => (
-              <p key={i} className="about-description">
-                {text}
-              </p>
-            ))}
+            <p className="about-description">
+              {section.texts.join(lang === 'ja' ? '' : ' ')}
+            </p>
           </div>
         ))}
 

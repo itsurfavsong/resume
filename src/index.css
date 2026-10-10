@@ -5,6 +5,7 @@
 }
 
 button {
+  font-family: inherit;
   border: none;
   border-radius: 10px;
   cursor: pointer;
