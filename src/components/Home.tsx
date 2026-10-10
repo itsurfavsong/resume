@@ -56,6 +56,9 @@ export default function Home() {
           <button className="btn btn-secondary" onClick={handleScrollToContact}>
             {t.contactCta}
           </button>
+          <a className="btn btn-secondary" href="/SongBomi_CV_ja.pdf" download="SongBomi_CV_ja.pdf">
+            {t.cvDownload}
+          </a>
         </div>
       </div>
 

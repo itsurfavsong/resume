@@ -282,3 +282,7 @@ body {
     display: none;
   }
 }
+
+a.btn {
+  text-decoration: none;
+}
