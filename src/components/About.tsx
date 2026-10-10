@@ -1,22 +1,24 @@
 import React from "react";
 import "./About.css";
 import { aboutSections } from "../contants/about.constants";
+import { useLanguage } from "../i18n/LanguageContext";
 import languageGraph from "../assets/language-graph.png";
 
 const About: React.FC = () => {
+  const { lang, t } = useLanguage();
   return (
     <section id="about" className="about-section">
       <div className="about-content">
 
-        <h2 className="section-title">About Me</h2>
+        <h2 className="section-title">{t.aboutTitle}</h2>
 
         <div className="about-image">
-          <img src={languageGraph} alt="Language Journey Graph" />
+          <img src={languageGraph} alt={t.aboutImageAlt} width={1024} height={768} loading="lazy" />
         </div>
 
-        <h3 className="about-formula">f(송보미) = 언어</h3>
+        <p className="about-formula">{t.aboutFormula}</p>
 
-        {aboutSections.map((section, index) => (
+        {aboutSections[lang].map((section, index) => (
           <div key={index} className="about-block">
             {section.texts.map((text, i) => (
               <p key={i} className="about-description">

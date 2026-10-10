@@ -14,26 +14,6 @@
   padding: 0 20px;
 }
 
-.section-title {
-  font-size: 3em;
-  margin-bottom: 40px;
-  background: linear-gradient(to right, var(--accent-blue-start), var(--accent-blue-end));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  display: inline-block;
-  position: relative;
-}
-
-.section-title::after {
-  content: '';
-  display: block;
-  width: 60px;
-  height: 4px;
-  background: linear-gradient(to right, var(--accent-blue-start), var(--accent-blue-end));
-  margin: 10px auto 0;
-  border-radius: 2px;
-}
-
 .education-entry {
   background-color: #1a1a1a;
   margin-bottom: 30px;
@@ -49,7 +29,8 @@
   margin-bottom: 5px;
 }
 
-.education-entry h4 {
+.education-entry .entry-org {
+  font-weight: bold;
   font-size: 1.3em;
   color: var(--text-light);
   margin-bottom: 10px;
@@ -70,4 +51,10 @@
 .education-entry ul li {
   margin-bottom: 8px;
   line-height: 1.6;
+}
+
+.education-note {
+  font-size: 0.95em;
+  color: var(--text-gray);
+  margin-bottom: 10px;
 }

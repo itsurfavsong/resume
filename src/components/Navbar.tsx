@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import './Navbar.css';
+import { useLanguage } from '../i18n/LanguageContext';
 import { menuItems } from '../contants/menu.constants';
 
 const Navbar: React.FC = () => {
+  const { lang, setLang, t } = useLanguage();
   const [scrolled, setScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [menuItemsVisible, setMenuItemsVisible] = useState(false); // New state for staggered appearance
@@ -48,14 +50,30 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
+    <nav aria-label={t.navLabel} className={`navbar ${scrolled ? 'scrolled' : ''}`}>
       <div className="navbar-container">
         <a href="#home" className="navbar-brand" onClick={() => scrollToSection('home')}>
           {"<Bomi />"}
         </a>
         
+        <button
+          type="button"
+          className="lang-switch"
+          aria-label={t.switchAria}
+          onClick={() => setLang(lang === 'ja' ? 'ko' : 'ja')}
+        >
+          <span className={lang === 'ja' ? 'active' : ''}>JA</span>
+          <span className={lang === 'ko' ? 'active' : ''}>KO</span>
+        </button>
+
         {/* Hamburger menu toggle button */}
-        <button className={`menu-toggle ${isMenuOpen ? 'open' : ''}`} onClick={toggleMenu}>
+        <button
+          type="button"
+          className={`menu-toggle ${isMenuOpen ? 'open' : ''}`}
+          onClick={toggleMenu}
+          aria-label={t.menuLabel}
+          aria-expanded={isMenuOpen}
+        >
           <div />
           <div />
           <div />
