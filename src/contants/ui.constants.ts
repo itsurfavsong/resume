@@ -8,6 +8,7 @@ export interface UiText {
   viewProjects: string;
   contactCta: string;
   cvDownload: string;
+  backToTop: string;
   aboutTitle: string;
   aboutFormula: string;
   experienceTitle: string;
@@ -43,6 +44,7 @@ export const uiText: Record<Lang, UiText> = {
     viewProjects: '制作実績を見る',
     contactCta: 'お問い合わせ',
     cvDownload: '履歴書をダウンロード',
+    backToTop: 'ページの先頭へ戻る',
     aboutTitle: 'About Me',
     aboutFormula: 'f(ソン・ボミ) = 言語',
     experienceTitle: 'Experience',
@@ -76,6 +78,7 @@ export const uiText: Record<Lang, UiText> = {
     viewProjects: '프로젝트 보기',
     contactCta: '연락하기',
     cvDownload: '이력서 다운로드 (일본어)',
+    backToTop: '맨 위로 이동',
     aboutTitle: 'About Me',
     aboutFormula: 'f(송보미) = 언어',
     experienceTitle: 'Experience',
