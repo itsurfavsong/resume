@@ -8,9 +8,9 @@ export const experienceData: Record<Lang, Job[]> = {
       company: 'Flipside Distribution Pty Ltd(豪州・メルボルン)',
       duration: '2024年5月 ～ 2025年3月',
       responsibilities: [
-        'Carhartt WIP商品の販売を担当しました。',
-        '英語での接客を行いました。',
-        'クレーム対応を行いました。'
+        'Carhartt WIP商品の販売',
+        '英語での接客',
+        'クレーム対応'
       ],
     },
     {
@@ -18,13 +18,13 @@ export const experienceData: Record<Lang, Job[]> = {
       company: 'AOMG Ltd(韓国・ソウル)',
       duration: '2023年9月 ～ 2024年4月',
       responsibilities: [
-        '海外イベント・ツアーの企画・運営を支援しました。',
-        'マーケティング戦略の立案を担当しました。',
-        'SNS運用とコンテンツ企画を行いました。',
-        '市場・競合分析を行いました。',
-        '契約・スケジュール管理を担当しました。',
-        '宣材のデザインを担当しました。',
-        'メディアとの調整を行いました。'
+        '海外イベント・ツアーの企画・運営支援',
+        'マーケティング戦略の立案',
+        'SNS運用とコンテンツ企画',
+        '市場・競合分析',
+        '契約・スケジュール管理',
+        '宣材のデザイン',
+        'メディアとの調整'
       ],
     },
     {
@@ -32,10 +32,10 @@ export const experienceData: Record<Lang, Job[]> = {
       company: 'END(英国・ロンドン)',
       duration: '2023年1月 ～ 2023年6月',
       responsibilities: [
-        '中国語圏のお客様への対応で、通訳をサポートしました。',
-        '英語・中国語のマニュアルを翻訳しました。',
-        'CS研修を実施しました。',
-        '電話・問い合わせ対応を行いました。'
+        '中国語圏のお客様対応における通訳サポート',
+        '英語・中国語のマニュアル翻訳',
+        'CS研修の実施',
+        '電話・問い合わせ対応'
       ],
     },
     {
@@ -43,8 +43,8 @@ export const experienceData: Record<Lang, Job[]> = {
       company: 'Carhartt Work In Progress(英国・ロンドン)',
       duration: '2021年9月 ～ 2023年1月',
       responsibilities: [
-        '英語での接客・商品提案を行いました。',
-        'クレーム・特別リクエストに対応しました。'
+        '英語での接客・商品提案',
+        'クレーム・特別リクエストへの対応'
       ],
     },
     {
@@ -52,9 +52,9 @@ export const experienceData: Record<Lang, Job[]> = {
       company: 'adidas(韓国・ソウル)',
       duration: '2020年2月 ～ 2021年7月',
       responsibilities: [
-        '韓国語・中国語の通訳を担当しました。',
-        '接客・販売を行いました。',
-        '陳列と在庫整理を行いました。'
+        '韓国語・中国語の通訳',
+        '接客・販売',
+        '陳列・在庫整理'
       ],
     },
     {
@@ -62,8 +62,8 @@ export const experienceData: Record<Lang, Job[]> = {
       company: 'フリーランス',
       duration: '2019年12月 ～ 2021年7月',
       responsibilities: [
-        '社会人向けに1対1で指導しました(受講生3名、週3回・夜間)。',
-        'レッスンの設計と教材作成を行いました。'
+        '社会人向け1対1指導(受講生3名、週3回・夜間)',
+        'レッスン設計・教材作成'
       ],
     },
     {
@@ -71,11 +71,11 @@ export const experienceData: Record<Lang, Job[]> = {
       company: '延世大学(韓国・ソウルの私立総合大学)',
       duration: '2019年12月 ～ 2020年11月',
       responsibilities: [
-        '一般事務を担当しました。',
-        'イベントの企画・運営を行いました。',
-        '予約・会議の手配を行いました。',
-        'データ管理を担当しました。',
-        '部門間のサポートを行いました。'
+        '一般事務',
+        'イベントの企画・運営',
+        '予約・会議の手配',
+        'データ管理',
+        '部門間のサポート'
       ],
     }
   ],

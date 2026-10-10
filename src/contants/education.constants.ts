@@ -8,8 +8,8 @@ export const educationData: Record<Lang, EducationEntry[]> = {
       university: 'Data Science Academy(韓国・釜山のIT教育機関)',
       duration: '2026年3月 ～ 2026年11月(修了予定)',
       details: [
-        'Java、Spring Boot、JPA、Thymeleaf、JavaScript、Linux、MySQLを学んでいます。',
-        'チームプロジェクト「ギリギリ」で、チームリーダー・バックエンド開発を担当しました。'
+        '学習内容:Java、Spring Boot、JPA、Thymeleaf、JavaScript、Linux、MySQL',
+        'チームプロジェクト「ギリギリ」でチームリーダー・バックエンド開発を担当'
       ]
     },
     {
@@ -17,8 +17,8 @@ export const educationData: Record<Lang, EducationEntry[]> = {
       university: 'グリーンコンピュータアートセンター(韓国・大邱のIT教育機関)',
       duration: '2025年8月 ～ 2026年1月',
       details: [
-        'JavaScript、TypeScript、React、Next.js、Node.js、Express.js、PostgreSQLを学びました。',
-        'チームプロジェクト「スムケア」「DG Delivery」に取り組みました。'
+        '学習内容:JavaScript、TypeScript、React、Next.js、Node.js、Express.js、PostgreSQL',
+        'チームプロジェクト「スムケア」「DG Delivery」'
       ]
     },
     {
@@ -31,7 +31,7 @@ export const educationData: Record<Lang, EducationEntry[]> = {
       university: '啓明大学(韓国・大邱の私立総合大学)',
       duration: '2015年3月 ～ 2019年2月',
       details: [
-        '在学中、台湾へ約6か月間、交換留学しました。'
+        '在学中、台湾へ交換留学(約6か月)'
       ]
     }
   ],
