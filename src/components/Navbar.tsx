@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './Navbar.css';
-import { useLanguage } from '../i18n/LanguageContext';
+import { useLanguage, LANG_SWITCH_ENABLED } from '../i18n/LanguageContext';
 import { menuItems } from '../contants/menu.constants';
 
 const Navbar: React.FC = () => {
@@ -56,15 +56,17 @@ const Navbar: React.FC = () => {
           {"<Bomi />"}
         </a>
         
-        <button
-          type="button"
-          className="lang-switch"
-          aria-label={t.switchAria}
-          onClick={() => setLang(lang === 'ja' ? 'ko' : 'ja')}
-        >
-          <span className={lang === 'ja' ? 'active' : ''}>JA</span>
-          <span className={lang === 'ko' ? 'active' : ''}>KO</span>
-        </button>
+        {LANG_SWITCH_ENABLED && (
+          <button
+            type="button"
+            className="lang-switch"
+            aria-label={t.switchAria}
+            onClick={() => setLang(lang === 'ja' ? 'ko' : 'ja')}
+          >
+            <span className={lang === 'ja' ? 'active' : ''}>JA</span>
+            <span className={lang === 'ko' ? 'active' : ''}>KO</span>
+          </button>
+        )}
 
         {/* Hamburger menu toggle button */}
         <button

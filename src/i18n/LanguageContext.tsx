@@ -3,6 +3,9 @@ import { uiText, type Lang, type UiText } from '../contants/ui.constants';
 
 const STORAGE_KEY = 'portfolio-lang';
 
+// 韓国語版を公開するときは true にする(ナビゲーションの切替ボタンが表示される)
+export const LANG_SWITCH_ENABLED = false;
+
 interface LanguageContextValue {
   lang: Lang;
   setLang: (lang: Lang) => void;
@@ -11,8 +14,9 @@ interface LanguageContextValue {
 
 const LanguageContext = createContext<LanguageContextValue | null>(null);
 
-// 初回訪問時は日本語を表示し、以降は選択した言語を記憶する
+// 初回訪問時は日本語を表示し、切替ボタンが有効なときは選択した言語を記憶する
 const getInitialLang = (): Lang => {
+  if (!LANG_SWITCH_ENABLED) return 'ja';
   try {
     const saved = localStorage.getItem(STORAGE_KEY);
     if (saved === 'ja' || saved === 'ko') return saved;
