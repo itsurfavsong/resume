@@ -1,21 +1,21 @@
-import { Job } from "../types";
+import { Job } from '../types';
 import { type Lang } from './ui.constants';
 
 export const experienceData: Record<Lang, Job[]> = {
   ja: [
     {
       title: '正社員',
-      company: 'Flipside Distribution Pty Ltd(豪州・メルボルン)',
+      company: 'Flipside Distribution Pty Ltd（豪州・メルボルン）',
       duration: '2024年5月 ～ 2025年3月',
       responsibilities: [
         'Carhartt WIP商品の販売',
         '英語での接客',
-        'クレーム対応'
+        'クレーム対応',
       ],
     },
     {
-      title: '正社員・海外事業部',
-      company: 'AOMG Ltd(韓国・ソウル)',
+      title: '正社員',
+      company: 'AOMG Ltd（韓国・ソウル）',
       duration: '2023年9月 ～ 2024年4月',
       responsibilities: [
         '海外イベント・ツアーの企画・運営支援',
@@ -24,60 +24,60 @@ export const experienceData: Record<Lang, Job[]> = {
         '市場・競合分析',
         '契約・スケジュール管理',
         '宣材のデザイン',
-        'メディアとの調整'
+        'メディアとの調整',
       ],
     },
     {
       title: '正社員',
-      company: 'END(英国・ロンドン)',
+      company: 'END（英国・ロンドン）',
       duration: '2023年1月 ～ 2023年6月',
       responsibilities: [
         '中国語圏のお客様対応における通訳サポート',
         '英語・中国語のマニュアル翻訳',
         'CS研修の実施',
-        '電話・問い合わせ対応'
+        '電話・問い合わせ対応',
       ],
     },
     {
       title: '正社員',
-      company: 'Carhartt Work In Progress(英国・ロンドン)',
+      company: 'Carhartt Work In Progress（英国・ロンドン）',
       duration: '2021年9月 ～ 2023年1月',
       responsibilities: [
         '英語での接客・商品提案',
-        'クレーム・特別リクエストへの対応'
-      ],
-    },
-    {
-      title: '契約社員(週末勤務)',
-      company: 'adidas(韓国・ソウル)',
-      duration: '2020年2月 ～ 2021年7月',
-      responsibilities: [
-        '韓国語・中国語の通訳',
-        '接客・販売',
-        '陳列・在庫整理'
-      ],
-    },
-    {
-      title: '中国語講師',
-      company: 'フリーランス',
-      duration: '2019年12月 ～ 2021年7月',
-      responsibilities: [
-        '社会人向け1対1指導(受講生3名、週3回・夜間)',
-        'レッスン設計・教材作成'
+        'クレーム・特別リクエストへの対応',
       ],
     },
     {
       title: '契約社員',
-      company: '延世大学(韓国・ソウルの私立総合大学)',
+      company: 'adidas（韓国・ソウル）',
+      duration: '2020年2月 ～ 2021年7月',
+      responsibilities: [
+        '韓国語・中国語の通訳',
+        '接客・販売',
+        '陳列・在庫整理',
+      ],
+    },
+    {
+      title: '中国語講師',
+      company: 'フリーランス（韓国・ソウル）',
+      duration: '2019年12月 ～ 2021年7月',
+      responsibilities: [
+        '社会人向け1対1指導（受講生3名、週3回・夜間）',
+        'レッスン設計・教材作成',
+      ],
+    },
+    {
+      title: '契約社員',
+      company: '延世大学（韓国・ソウル）',
       duration: '2019年12月 ～ 2020年11月',
       responsibilities: [
         '一般事務',
         'イベントの企画・運営',
         '予約・会議の手配',
         'データ管理',
-        '部門間のサポート'
+        '部門間のサポート',
       ],
-    }
+    },
   ],
   ko: [
     {
@@ -87,7 +87,7 @@ export const experienceData: Record<Lang, Job[]> = {
       responsibilities: [
         'Carhartt WIP 상품 판매',
         '영어 고객 응대',
-        '클레임 처리'
+        '클레임 처리',
       ],
     },
     {
@@ -101,7 +101,7 @@ export const experienceData: Record<Lang, Job[]> = {
         '시장·경쟁사 분석',
         '계약 및 일정 관리',
         '홍보물 디자인',
-        '미디어 협의'
+        '미디어 협의',
       ],
     },
     {
@@ -112,7 +112,7 @@ export const experienceData: Record<Lang, Job[]> = {
         '중국어권 고객 응대 시 통역 지원',
         '영어·중국어 매뉴얼 번역',
         'CS 교육 진행',
-        '전화·문의 응대'
+        '전화·문의 응대',
       ],
     },
     {
@@ -121,7 +121,7 @@ export const experienceData: Record<Lang, Job[]> = {
       duration: '2021.09 - 2023.01',
       responsibilities: [
         '영어 고객 응대 및 상품 제안',
-        '클레임·특별 요청 처리'
+        '클레임·특별 요청 처리',
       ],
     },
     {
@@ -131,7 +131,7 @@ export const experienceData: Record<Lang, Job[]> = {
       responsibilities: [
         '한국어·중국어 통역',
         '고객 응대 및 판매',
-        '진열 및 재고 정리'
+        '진열 및 재고 정리',
       ],
     },
     {
@@ -140,7 +140,7 @@ export const experienceData: Record<Lang, Job[]> = {
       duration: '2019.12 - 2021.07',
       responsibilities: [
         '직장인 대상 1:1 수업 (수강생 3명, 주 3회 야간)',
-        '수업 구성 및 교재 제작'
+        '수업 구성 및 교재 제작',
       ],
     },
     {
@@ -152,8 +152,8 @@ export const experienceData: Record<Lang, Job[]> = {
         '행사 기획·운영',
         '예약 및 회의 준비',
         '데이터 관리',
-        '부서 간 업무 지원'
+        '부서 간 업무 지원',
       ],
-    }
-  ]
+    },
+  ],
 };
