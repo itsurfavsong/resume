@@ -4,7 +4,7 @@ import { uiText, type Lang, type UiText } from '../contants/ui.constants';
 const STORAGE_KEY = 'portfolio-lang';
 
 // 韓国語版を公開するときは true にする(ナビゲーションの切替ボタンが表示される)
-export const LANG_SWITCH_ENABLED = false;
+export const LANG_SWITCH_ENABLED = true;
 
 interface LanguageContextValue {
   lang: Lang;

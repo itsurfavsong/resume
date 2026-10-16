@@ -18,10 +18,14 @@
 }
 
 body {
-  font-family: 'Noto Sans JP', 'Hiragino Sans', 'Yu Gothic', Meiryo, sans-serif;
+  font-family: 'Noto Sans JP', 'Noto Sans KR', 'Hiragino Sans', 'Yu Gothic', Meiryo, 'Malgun Gothic', sans-serif;
   background-color: var(--background-dark);
   color: var(--text-light);
   overflow-x: hidden; /* Prevent horizontal scroll from particles */
+}
+
+html[lang='ko'] body {
+  font-family: 'Noto Sans KR', 'Noto Sans JP', 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif;
 }
 
 /* Hero Section */
