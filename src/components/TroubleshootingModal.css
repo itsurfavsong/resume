@@ -1,0 +1,142 @@
+/* src/components/TroubleshootingModal.css */
+.ts-modal {
+  width: min(92vw, 720px);
+  max-height: 85vh;
+  margin: auto;
+  padding: 0;
+  border: 1px solid #333;
+  border-radius: 10px;
+  background-color: #1a1a1a;
+  color: var(--text-light);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+  overflow: hidden;
+}
+
+.ts-modal[open] {
+  display: flex;
+  flex-direction: column;
+}
+
+.ts-modal::backdrop {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.ts-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 20px 16px 28px;
+  border-bottom: 1px solid #333;
+}
+
+.ts-header h3 {
+  font-size: 1.3em;
+  color: var(--accent-blue-start);
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+  text-wrap: balance;
+}
+
+.ts-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--text-light);
+}
+
+.ts-close:hover {
+  background-color: #333;
+}
+
+.ts-body {
+  padding: 16px 28px 28px;
+  overflow-y: auto;
+  text-align: left;
+}
+
+.ts-item {
+  border-bottom: 1px solid #333;
+}
+
+.ts-item summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 56px;
+  padding: 8px 0;
+  font-weight: bold;
+  line-height: 1.6;
+  cursor: pointer;
+  list-style: none;
+}
+
+.ts-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.ts-item summary::after {
+  content: '+';
+  flex-shrink: 0;
+  font-size: 1.4em;
+  color: var(--accent-blue-start);
+}
+
+.ts-item[open] summary::after {
+  content: '−';
+}
+
+.ts-content {
+  padding: 4px 0 20px 14px;
+  border-left: 3px solid var(--accent-blue-start);
+  margin-bottom: 16px;
+}
+
+.ts-content h4 {
+  margin: 12px 0 6px;
+  font-size: 0.95em;
+  color: var(--accent-blue-start);
+}
+
+.ts-content h4:first-child {
+  margin-top: 0;
+}
+
+.ts-content p {
+  line-height: 1.9;
+  letter-spacing: 0.02em;
+  text-align: justify;
+  line-break: strict;
+  overflow-wrap: anywhere;
+  white-space: pre-line;
+}
+
+.ts-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  margin-top: 8px;
+  color: var(--accent-blue-start);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.ts-link:hover {
+  color: var(--text-light);
+}
+
+@media (max-width: 768px) {
+  .ts-header {
+    padding-left: 20px;
+  }
+
+  .ts-body {
+    padding: 8px 20px 24px;
+  }
+}

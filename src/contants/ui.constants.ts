@@ -19,6 +19,12 @@ export interface UiText {
   contactTitle: string;
   contactDescription: string;
   caseStudy: string;
+  demoVideo: string;
+  close: string;
+  troubleshooting: string;
+  problemLabel: string;
+  solutionLabel: string;
+  readMore: string;
   teamLabel: string;
   roleLabel: string;
   featuresLabel: string;
@@ -55,6 +61,12 @@ export const uiText: Record<Lang, UiText> = {
     contactTitle: 'Contact',
     contactDescription: '詳しいお話を伺いたい方は、お気軽にご連絡ください。',
     caseStudy: 'ケーススタディ',
+    demoVideo: 'デモ動画',
+    close: '閉じる',
+    troubleshooting: 'トラブルシューティング',
+    problemLabel: '発生した問題',
+    solutionLabel: '解決方法',
+    readMore: '詳しく読む',
     teamLabel: 'チーム',
     roleLabel: '役割',
     featuresLabel: '主な機能',
@@ -63,7 +75,7 @@ export const uiText: Record<Lang, UiText> = {
     velog: 'Velog',
     menuLabel: 'メニューを開閉する',
     navLabel: 'メインナビゲーション',
-    aboutImageAlt: '言語習熟度の推移グラフ(中国語・英語・プログラミング言語)',
+    aboutImageAlt: '言語習熟度の推移グラフ（中国語・英語・プログラミング言語）',
     contactEmailLabel: 'メール',
     switchAria: '韓国語に切り替える',
   },
@@ -90,6 +102,12 @@ export const uiText: Record<Lang, UiText> = {
     contactDescription:
       '더 자세한 이야기를 나누고 싶으시다면, 편하게 연락 주세요!',
     caseStudy: 'Case Study',
+    demoVideo: '데모 영상',
+    close: '닫기',
+    troubleshooting: '트러블슈팅',
+    problemLabel: '문제 상황',
+    solutionLabel: '해결 방법',
+    readMore: '자세히 보기',
     teamLabel: '팀',
     roleLabel: '역할',
     featuresLabel: '주요 기능',

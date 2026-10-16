@@ -1,3 +1,10 @@
+export interface TroubleshootingItem {
+  title: string;
+  problem: string;
+  solution: string;
+  link?: { label?: string; url: string };
+}
+
 export interface Project {
   title: string;
   period: string;
@@ -11,6 +18,8 @@ export interface Project {
   githubLink?: string;
   notionLink?: string;
   deployLink?: string;
+  videoLink?: string;
+  troubleshooting?: TroubleshootingItem[];
   image?: string;
   imageFit?: 'cover' | 'contain';
   imageBg?: string;
