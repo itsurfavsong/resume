@@ -7,7 +7,6 @@ export interface UiText {
   heroDescription: [string, string];
   viewProjects: string;
   contactCta: string;
-  cvDownload: string;
   backToTop: string;
   aboutTitle: string;
   aboutFormula: string;
@@ -49,7 +48,6 @@ export const uiText: Record<Lang, UiText> = {
     ],
     viewProjects: '制作実績を見る',
     contactCta: 'お問い合わせ',
-    cvDownload: '履歴書をダウンロード',
     backToTop: 'ページの先頭へ戻る',
     aboutTitle: 'About Me',
     aboutFormula: 'f(ソン・ボミ) = 言語',
@@ -75,7 +73,7 @@ export const uiText: Record<Lang, UiText> = {
     velog: 'Velog',
     menuLabel: 'メニューを開閉する',
     navLabel: 'メインナビゲーション',
-    aboutImageAlt: '言語習熟度の推移グラフ（中国語・英語・プログラミング言語）',
+    aboutImageAlt: '言語習熟度の推移グラフ（中国語・英語・日本語・プログラミング言語）',
     contactEmailLabel: 'メール',
     switchAria: '韓国語に切り替える',
   },
@@ -89,7 +87,6 @@ export const uiText: Record<Lang, UiText> = {
     ],
     viewProjects: '프로젝트 보기',
     contactCta: '연락하기',
-    cvDownload: '이력서 다운로드 (일본어)',
     backToTop: '맨 위로 이동',
     aboutTitle: 'About Me',
     aboutFormula: 'f(송보미) = 언어',
@@ -104,7 +101,7 @@ export const uiText: Record<Lang, UiText> = {
     caseStudy: 'Case Study',
     demoVideo: '데모 영상',
     close: '닫기',
-    troubleshooting: '트러블슈팅',
+    troubleshooting: 'Troubleshooting',
     problemLabel: '문제 상황',
     solutionLabel: '해결 방법',
     readMore: '자세히 보기',
@@ -116,7 +113,7 @@ export const uiText: Record<Lang, UiText> = {
     velog: 'Velog.io',
     menuLabel: '메뉴 열기/닫기',
     navLabel: '메인 내비게이션',
-    aboutImageAlt: '언어 숙련도 변화 그래프 (중국어, 영어, 프로그래밍 언어)',
+    aboutImageAlt: '언어 숙련도 변화 그래프 (중국어, 영어, 일본어, 프로그래밍 언어)',
     contactEmailLabel: '이메일',
     switchAria: '일본어로 전환',
   },

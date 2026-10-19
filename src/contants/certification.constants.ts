@@ -26,11 +26,15 @@ export const certificationData: Record<Lang, CertificationGroup[]> = {
         '教職課程（学科定員65名中6名のみ選抜）を修了',
       ],
     },
+    {
+      category: 'その他',
+      items: ['普通自動車運転免許（韓国）（2021年5月）'],
+    },
   ],
   ko: [
     {
       category: '일본어',
-      items: ['JPT 530점 (2026.07)', 'JLPT N2 수준', '12월 JLPT N2 응시 예정'],
+      items: ['JPT 575점 (2026.10)', 'JLPT N2 수준', '12월 JLPT N2 응시 예정'],
     },
     {
       category: '영어',
@@ -41,15 +45,15 @@ export const certificationData: Record<Lang, CertificationGroup[]> = {
       items: ['신HSK 6급 220점 (2015.12)', '통역·강사 경험'],
     },
     {
-      category: '한국어',
-      items: ['모국어'],
-    },
-    {
       category: '교원 자격',
       items: [
         '중등학교 정교사 2급 (중국어), 한국 교육부 (2019.02)',
         '교직과정 이수 (학과 정원 65명 중 6명 선발)',
       ],
+    },
+    {
+      category: '기타',
+      items: ['1종 보통 운전면허 (한국) (2021.05)'],
     },
   ],
 };

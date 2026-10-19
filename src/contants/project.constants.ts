@@ -29,19 +29,6 @@ const soomCare = {
   image: soomcareImage,
 };
 
-// トラブルシューティング(モーダル)の書き方(DG Deliveryに記入済み):
-// 各プロジェクト(ja / ko それぞれ)に troubleshooting を追加すると、「トラブルシューティング」
-// ボタンが表示され、モーダル内の各項目をタップで開閉できます(link は省略可)。
-// troubleshooting がないプロジェクトは、従来どおり notionLink へ移動します。
-//
-//   troubleshooting: [
-//     {
-//       title: '連打による二重注文',
-//       problem: '何が起きたか',
-//       solution: 'どう解決したか',
-//       link: { url: 'https://...' },
-//     },
-//   ],
 export const projectsData: Record<Lang, Project[]> = {
   ja: [
     {
@@ -58,8 +45,9 @@ export const projectsData: Record<Lang, Project[]> = {
         '目標:店舗の廃棄ロス削減と、食品ロスという社会課題の解決',
       ],
       responsibilities: [
-        '5名チームのリーダーとして、WBSによる進捗管理・担当割り振り、提出物・発表の取りまとめ',
-        'ERD・DB設計、テーブルスキーマの実装とエンティティのマッピング、共通CRUDの実装',
+        '5名チームのリーダーとして、WBS・Jiraによる進捗管理・タスク管理・担当割り振り、提出物・発表の取りまとめ',
+        '週2回の定例会議の運営',
+        'ERD・DB設計、テーブルスキーマの実装とエンティティのマッピング、共通CRUDの実装（チームで共同担当）',
         'グローバル例外ハンドラと共通レスポンスDTOによる、チーム全体の例外レスポンス形式の統一',
         '画面設計（ワイヤーフレーム）と、共通レイアウト・共通コンポーネント（モーダル・トースト・ページング・ローディング）の設計',
         'スーパー管理者機能を単独で担当（運営統計ダッシュボード、会員管理、出店申請の承認フロー、通報・問い合わせ対応、共通コード／カテゴリのマスタ管理）',
@@ -70,36 +58,23 @@ export const projectsData: Record<Lang, Project[]> = {
       ...girigiri,
       troubleshooting: [
         {
-          title:
-            '【Server】営業時間「09:00 ~」でArrayIndexOutOfBoundsExceptionが発生',
-          problem:
-            '特定の店舗で予約キャンセルボタンを押すと、「不明なエラー」が表示されました。営業時間が「09:00 ~」のように、終了時刻なしで登録されている店舗でした。',
+          title: '【Server・Auth】停止した会員がログインできてしまう',
+          problem: '停止した会員がログインできてしまう',
           solution:
-            '原因：split("~")は末尾の空文字列を自動で削除するため、配列の長さが1になり、[1]にアクセスした時点で例外が発生していました。また、呼び出し側はIllegalArgumentExceptionだけをcatchしていたため、この例外は捕捉されずにそのまま発生していました。\n対応：split("~", 2)で分割数を制限し、終了時刻は正規表現で「H:mm」の部分だけを取り出すように修正しました。形式が正しくない場合は既存と同じIllegalArgumentExceptionを投げるため、呼び出し側を変更せずに「営業時間の形式を読み取れません」という案内が表示されるようになりました。',
+            '原因：停止でstatusは変わるが、ログイン時にその値を確認していなかった\n対応：メールはisEnabled()、ソーシャルは共通メソッドで停止状態をチェック',
+        },
+        {
+          title: '【Server・Design】受け取り待ちの予約があっても退会できる',
+          problem: '受け取り待ちの予約があっても退会できる',
+          solution:
+            '原因：「未完了予約」の条件が3か所に別々にあり、すべてreadyが抜けていた\n対応：条件を1つの定数にまとめ、3か所で同じ基準を使うように',
         },
         {
           title:
-            '【Server】管理者でログインすると、ユーザー用のホーム画面に移動してしまう',
-          problem:
-            '管理者（ADMIN）アカウントでログインしても、管理者ダッシュボードではなく、一般ユーザーのホーム画面に移動していました。',
+            '【DB・Transaction】返金エラーで予約キャンセル全体がロールバック',
+          problem: '返金エラーで予約キャンセル全体がロールバックされる',
           solution:
-            '原因：ログイン後の移動先を決める共通処理（メールログイン・ソーシャルログイン共通）が、プロフィール入力が完了しているかどうかだけを確認しており、roleを確認していませんでした。\n対応：プロフィールの確認より先にroleを確認し、ADMINの場合はすぐに/superadmin/dashboardへ移動するように修正しました。curlでログインし、レスポンスのLocationヘッダーがダッシュボードになっていることを確認しました。',
-        },
-        {
-          title:
-            '【DB】カードは「今日0件」なのに、クリックすると「全体55件」と表示される',
-          problem:
-            'スーパー管理者ダッシュボードで、カードに表示された件数と、クリック後の統計画面の件数が一致しませんでした。また、日別の取引は0件なのに、消化率チャートでは「販売3件」と表示される日もありました。',
-          solution:
-            '原因：カードのリンクにperiod=todayが抜けていたため、統計画面のデフォルトタブ「全体」に移動していました。さらに、画面ごとに「販売」を集計する日付の基準が違っていました（ピックアップ完了日と商品登録日）。\n対応：リンクにperiod=todayを追加し、取引件数はピックアップ完了日時、消化率は商品の締切日時を基準に統一しました。1つの商品に予約が複数あっても重複してカウントしないように、商品IDをSetでまとめて集計しました。画面ごとの数字が一致するようになりました。',
-        },
-        {
-          title:
-            '【Server】ローカルでは正しいのに、サーバーでは「今日」がずれる可能性がある（タイムゾーン）',
-          problem:
-            '「今日」を基準にする集計や締切の処理は、ローカル環境では正しく動いていました。しかし、実行環境のタイムゾーンが変わると、日付の基準がずれる構造になっていました。',
-          solution:
-            '原因：.envのserverTimezone=Asia/SeoulはJDBCドライバーの変換にだけ適用され、LocalDateTime.now()はJVMのデフォルトタイムゾーンに依存していました。ローカルのOSがたまたまKSTだったため、今まで正しく見えていただけでした。\n対応：アプリケーションクラスのstaticブロックでTimeZone.setDefault(Asia/Seoul)を設定しました。mainメソッドではなくstaticブロックにしたことで、jarで起動するときだけでなく、テストを実行するときにも同じタイムゾーンが適用されるようになりました。',
+            '原因：PGのエラーメッセージが255文字を超え、保存時にDBエラー\n対応：保存前に255文字に切る共通メソッドを追加',
         },
       ],
       image: girigiriImage,
@@ -109,7 +84,7 @@ export const projectsData: Record<Lang, Project[]> = {
     {
       title: 'DG Delivery',
       period: '2025年12月 ～ 2026年1月',
-      team: '5名',
+      team: '4名',
       role: 'Full-stack Developer',
       description:
         '大邱を訪れる旅行者向けのショッピング配送サービス（PWA）。購入商品のホテルへの配送による、手ぶら観光の実現。',
@@ -289,7 +264,7 @@ export const projectsData: Record<Lang, Project[]> = {
       title: 'スムケア（SoomCare）',
       period: '2025年9月 ～ 2025年10月',
       team: '5名',
-      role: 'Frontend Developer・Project Manager',
+      role: 'Frontend Developer・Team Lead',
       description:
         '韓国の大気質情報（PM2.5・PM10など）のリアルタイム可視化Webサービス（PWA）。カード型のダッシュボードUIを採用。',
       responsibilities: [
@@ -309,6 +284,15 @@ export const projectsData: Record<Lang, Project[]> = {
         'Vercel',
       ],
       ...soomCare,
+      troubleshooting: [
+        {
+          title: '【チーム運営】初めて開発に取り組むメンバーとの協業',
+          problem:
+            'チームの大半が初めての開発プロジェクトで、最大の課題は日程管理と業務の分担でした。また、プロジェクトが進むにつれて、メンバーごとに思い描くサービスの姿が食い違う場面もありました。',
+          solution:
+            '対応：作業を細かい単位に分け、ガントチャートと機能仕様書を継続的に更新して、各作業の進み具合とボトルネックを管理しました。進みが遅いメンバーには、実装を一緒に進めたり方向性を示したりして支援し、全体の日程が遅れないように調整しました。認識のずれについては、会議でサービスの目標とユーザー価値を改めてすり合わせ、チームが同じ方向を向くようにしました。',
+        },
+      ],
     },
   ],
   ko: [
@@ -326,8 +310,9 @@ export const projectsData: Record<Lang, Project[]> = {
         '매장의 폐기 손실을 줄이고 식품 손실 문제 해결을 목표로 함',
       ],
       responsibilities: [
-        '5인 팀 리더: WBS 기반 일정 관리·업무 분배, 제출물 및 발표 취합',
-        'ERD·DB 설계, 테이블 스키마 및 엔티티 매핑 구현, 공통 CRUD 구현',
+        '5인 팀 리더: WBS·Jira 기반 일정·작업 관리 및 업무 분배, 제출물 및 발표 취합',
+        '주 2회 정기 회의 운영',
+        'ERD·DB 설계, 테이블 스키마 및 엔티티 매핑 구현, 공통 CRUD 구현 (팀 공동 담당)',
         '글로벌 예외 핸들러와 공통 응답 DTO로 팀 전체의 예외 응답 형식 통일',
         '화면 설계(와이어프레임), 공통 레이아웃·공통 컴포넌트(모달·토스트·페이징·로딩) 설계',
         '슈퍼 관리자 기능 단독 담당: 운영 통계 대시보드, 회원 관리, 입점 신청 승인 플로우, 신고·문의 처리, 공통 코드·카테고리 마스터 관리',
@@ -338,34 +323,22 @@ export const projectsData: Record<Lang, Project[]> = {
       ...girigiri,
       troubleshooting: [
         {
-          title:
-            '[Server] 영업시간 "09:00 ~"에서 ArrayIndexOutOfBoundsException 발생',
-          problem:
-            '특정 매장에서 예약 취소 버튼을 누르면 "알 수 없는 오류"가 표시됨. 영업시간이 "09:00 ~"처럼 마감 시각 없이 등록된 매장이었음',
+          title: '[Server·Auth] 정지된 회원이 로그인 가능',
+          problem: '정지된 회원이 로그인 가능함',
           solution:
-            '원인: split("~")은 끝의 빈 문자열을 자동으로 제거해 배열 길이가 1이 되고, [1]에 접근하는 순간 예외가 발생함. 호출하는 쪽은 IllegalArgumentException만 catch하고 있어 이 예외는 잡히지 않았음\n해결: split("~", 2)로 분할 개수를 제한하고, 마감 시각은 정규식으로 "H:mm" 부분만 추출하도록 수정. 형식이 틀리면 기존과 같은 IllegalArgumentException을 던지므로, 호출하는 쪽을 수정하지 않아도 "영업시간 형식을 읽을 수 없어요" 안내가 표시됨',
+            '원인: 정지 시 status는 바뀌지만, 로그인 시 그 값을 확인하지 않았음\n해결: 이메일은 isEnabled(), 소셜은 공통 메서드로 정지 상태를 체크',
         },
         {
-          title: '[Server] 관리자로 로그인하면 유저용 홈 화면으로 이동',
-          problem:
-            '관리자(ADMIN) 계정으로 로그인해도 관리자 대시보드가 아닌 일반 유저 홈 화면으로 이동함',
+          title: '[Server·Design] 수령 대기 중인 예약이 있어도 탈퇴 가능',
+          problem: '수령 대기 중인 예약이 있어도 탈퇴 가능함',
           solution:
-            '원인: 로그인 후 이동할 곳을 정하는 공통 처리(이메일·소셜 로그인 공통)가 프로필 입력 완료 여부만 확인하고 role은 확인하지 않았음\n해결: 프로필 확인보다 먼저 role을 확인해, ADMIN이면 바로 /superadmin/dashboard로 이동하도록 수정. curl로 로그인해 응답의 Location 헤더가 대시보드로 나오는 것을 확인함',
+            '원인: "미완료 예약" 조건이 3곳에 따로 있었고, 모두 ready가 빠져 있었음\n해결: 조건을 하나의 상수로 통합해 3곳에서 같은 기준을 사용하도록 수정',
         },
         {
-          title: '[DB] 카드는 "오늘 0건"인데 클릭하면 "전체 55건"으로 표시됨',
-          problem:
-            '슈퍼 관리자 대시보드에서 카드에 표시된 건수와 클릭 후 통계 화면의 건수가 일치하지 않음. 일별 거래는 0건인데 소진율 차트에는 "판매 3건"으로 나오는 날도 있었음',
+          title: '[DB·Transaction] 환불 오류로 예약 취소 전체가 롤백',
+          problem: '환불 오류로 예약 취소 전체가 롤백됨',
           solution:
-            '원인: 카드 링크에 period=today가 빠져 통계 화면의 기본 탭 "전체"로 이동함. 또한 화면마다 "판매"를 집계하는 날짜 기준이 달랐음(픽업 완료일 vs 상품 등록일)\n해결: 링크에 period=today를 추가하고, 거래 건수는 픽업 완료 일시, 소진율은 상품 마감 일시 기준으로 통일. 한 상품에 예약이 여러 건이어도 중복 집계되지 않도록 상품 ID를 Set으로 묶어 집계. 화면 간 숫자가 일치함',
-        },
-        {
-          title:
-            '[Server] 로컬에서는 맞지만 서버에서 "오늘"이 어긋날 수 있음 (타임존)',
-          problem:
-            '"오늘" 기준 집계와 마감 처리는 로컬에서는 정상 동작함. 그러나 실행 환경의 타임존이 바뀌면 날짜 기준이 어긋나는 구조였음',
-          solution:
-            '원인: .env의 serverTimezone=Asia/Seoul은 JDBC 드라이버 변환에만 적용되고, LocalDateTime.now()는 JVM 기본 타임존을 따름. 로컬 OS가 우연히 KST여서 지금까지 맞아 보였을 뿐이었음\n해결: 애플리케이션 클래스의 static 블록에서 TimeZone.setDefault(Asia/Seoul) 설정. main 메서드가 아닌 static 블록에 둬서 jar 실행뿐 아니라 테스트 실행 시에도 같은 타임존이 적용됨',
+            '원인: PG 에러 메시지가 255자를 넘어 저장 시 DB 오류 발생\n해결: 저장 전에 255자로 자르는 공통 메서드 추가',
         },
       ],
       image: girigiriImage,
@@ -375,7 +348,7 @@ export const projectsData: Record<Lang, Project[]> = {
     {
       title: 'DG Delivery',
       period: '2025.12 - 2026.01',
-      team: '5명',
+      team: '4명',
       role: 'Full-stack Developer',
       description:
         '대구를 찾는 여행자를 위한 쇼핑 배송 서비스(PWA). 구매한 상품을 호텔로 배송해 가볍게 여행할 수 있도록 지원',
@@ -483,9 +456,9 @@ export const projectsData: Record<Lang, Project[]> = {
         {
           title: '[Server] 라우터 선언 순서 이슈',
           problem:
-            "로그에 Rider.id = 'settlement' 쿼리가 찍히고, 숫자 ID가 아닌 문자열이 들어감. DB에서 데이터를 못 찾아 프론트에 빈 화면이 표시됨",
+            "로그에 Rider.id = 'settlement' 쿼리가 찍히고, 숫자 ID가 아닌 문자열이 들어감. DB에서 데이터를 못 찾아 프론트엔드에 빈 화면이 표시됨",
           solution:
-            '원인: Express는 위에서부터 순서대로 경로를 매칭하므로, /:id가 /settlement보다 먼저 선언되면 "settlement"가 id로 해석됨\n해결: 고정 경로(/settlement)를 파라미터 경로(/:id)보다 위에 선언하도록 순서 조정. getSettlementByRider가 정상 실행되어 프론트 화면 복구',
+            '원인: Express는 위에서부터 순서대로 경로를 매칭하므로, /:id가 /settlement보다 먼저 선언되면 "settlement"가 id로 해석됨\n해결: 고정 경로(/settlement)를 파라미터 경로(/:id)보다 위에 선언하도록 순서 조정. getSettlementByRider가 정상 실행되어 프론트엔드 화면 복구',
           link: {
             url: 'https://iodized-wilderness-bba.notion.site/Server-2e200683cadc805c827cd96ac0529382',
           },
@@ -503,9 +476,9 @@ export const projectsData: Record<Lang, Project[]> = {
         {
           title: '[Server] 로그아웃 시 JWT 에러 발생',
           problem:
-            '로그아웃 요청 시 서버 콘솔에 JWT 관련 에러 로그가 계속 찍히고, 프론트에서 로그아웃 처리가 정상적으로 끝나지 않음',
+            '로그아웃 요청 시 서버 콘솔에 JWT 관련 에러 로그가 계속 찍히고, 프론트엔드에서 로그아웃 처리가 정상적으로 끝나지 않음',
           solution:
-            '원인: authenticate 미들웨어에서 로그아웃 경로 확인 전에 getBearerToken을 호출해, 토큰이 없으면 에러가 발생하고 로그아웃 로직까지 도달하지 못함\n해결: 토큰 조회 전에 로그아웃 경로를 먼저 판별하고, 로그아웃이면 에러를 무시하고 진행. authorize에서도 권한 체크를 생략. 컨트롤러까지 정상 도달해 로그아웃이 정상 동작함',
+            '원인: authenticate 미들웨어에서 로그아웃 경로 확인 전에 getBearerToken을 호출해, 토큰이 없으면 에러가 발생하고 로그아웃 로직까지 도달하지 못함\n해결: 토큰 조회 전에 로그아웃 경로를 먼저 판별하고, 로그아웃이면 에러를 무시하고 진행. authorize에서도 권한 체크를 생략. 컨트롤러까지 도달해 로그아웃이 정상 동작함',
           link: {
             url: 'https://iodized-wilderness-bba.notion.site/Server-JWT-2df00683cadc803f8f05e9a5b889aea5',
           },
@@ -533,9 +506,9 @@ export const projectsData: Record<Lang, Project[]> = {
         {
           title: '[DB] 진행 중 탭에서 주문이 0건으로 조회됨',
           problem:
-            "프론트에서 진행 중 주문 상태를 배열(status = ['mat', 'pick'])로 보냈는데, 진행 중 탭에서만 주문이 0건으로 나옴. DB에는 데이터가 존재함",
+            "프론트엔드에서 진행 중 주문 상태를 배열(status = ['mat', 'pick'])로 보냈는데, 진행 중 탭에서만 주문이 0건으로 나옴. DB에는 데이터가 존재함",
           solution:
-            "원인: 백엔드가 status의 타입을 고려하지 않고 where.status에 그대로 대입해, 배열이 WHERE status='mat,pick' 형태의 쿼리가 되어 매칭되지 않음\n해결: 프론트는 status=mat&status=pick 형식으로 직렬화해 전송하고, 백엔드는 배열일 때 Op.in 사용(WHERE status IN ('mat', 'pick'))",
+            "원인: 백엔드가 status의 타입을 고려하지 않고 where.status에 그대로 대입해, 배열이 WHERE status='mat,pick' 형태의 쿼리가 되어 매칭되지 않음\n해결: 프론트엔드는 status=mat&status=pick 형식으로 직렬화해 전송하고, 백엔드는 배열일 때 Op.in 사용(WHERE status IN ('mat', 'pick'))",
           link: {
             url: 'https://iodized-wilderness-bba.notion.site/DB-0-status-mat-req-2f300683cadc8025a6f2d2348a15ae3c',
           },
@@ -546,7 +519,7 @@ export const projectsData: Record<Lang, Project[]> = {
       title: '숨케어 (SoomCare)',
       period: '2025.09 - 2025.10',
       team: '5명',
-      role: 'Frontend Developer · Project Manager',
+      role: 'Frontend Developer · Team lead',
       description:
         '한국의 대기질 정보(PM2.5/PM10 등)를 실시간으로 시각화한 웹 서비스(PWA). 카드형 대시보드 UI 적용',
       responsibilities: [
@@ -566,6 +539,15 @@ export const projectsData: Record<Lang, Project[]> = {
         'Vercel',
       ],
       ...soomCare,
+      troubleshooting: [
+        {
+          title: '[팀 운영] 모두가 처음인 팀원들과의 협업',
+          problem:
+            '팀 대부분이 첫 개발 프로젝트 경험자여서 가장 큰 과제는 일정 관리와 업무 분담이었음. 프로젝트가 진행될수록 팀원마다 그리는 서비스의 모습이 달라지는 순간도 있었음',
+          solution:
+            '해결: 작업을 세부 단위로 나누고 간트 차트와 기능 명세서를 지속적으로 업데이트해 각 작업의 진행 속도와 병목 구간을 관리. 진행이 더딘 팀원에게는 구현을 함께 진행하거나 방향을 잡아 주는 방식으로 지원해 전체 일정이 지연되지 않도록 조율. 인식 차이는 회의를 통해 서비스의 목표와 사용자 가치를 다시 정렬해 팀이 같은 방향을 바라보도록 함',
+        },
+      ],
     },
   ],
 };

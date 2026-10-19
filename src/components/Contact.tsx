@@ -36,12 +36,6 @@ const Contact: React.FC = () => {
               <span className="contact-value">velog.io/@itsurfavsong</span>
             </a>
           </li>
-          <li>
-            <a href="/SongBomi_CV_ja.pdf" download="SongBomi_CV_ja.pdf" className="contact-link">
-              <span className="contact-label">CV</span>
-              <span className="contact-value">{t.cvDownload}</span>
-            </a>
-          </li>
         </ul>
         {/*
         <form className="contact-form">

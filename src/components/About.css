@@ -29,11 +29,14 @@
 
 .about-image {
   margin: 40px auto;
-  max-width: 60%;
+  max-width: min(100%, 560px);
   text-align: center;
 }
 
-.about-image img {
+.about-image img,
+.about-image .language-graph {
+  display: block;
+  width: 100%;
   max-width: 100%; /* Ensure image is not wider than its container */
   height: auto; /* Maintain aspect ratio */
   border-radius: 10px; /* Optional: adds a nice touch */
@@ -41,7 +44,8 @@
   transition: transform 0.3s ease;
 }
 
-.about-image img:hover {
+.about-image img:hover,
+.about-image .language-graph:hover {
   transform: scale(1.03);
 }
 
@@ -56,8 +60,14 @@
   margin: 0;
 }
 
+/* 韓国語版は段落ごとに間隔をあける */
+html[lang='ko'] .about-block + .about-block {
+  margin-top: 1.6em;
+}
+
 @media (max-width: 768px) {
-  .about-image img {
+  .about-image img,
+.about-image .language-graph {
     max-width: 90%; /* Smaller on mobile */
   }
 
@@ -65,4 +75,38 @@
     font-size: 1rem;
     letter-spacing: 0.01em;
   }
+}
+
+.about-highlight {
+  font-weight: 700;
+  color: var(--accent-blue-start);
+}
+
+.language-graph text {
+  font-family: inherit;
+  fill: #1a1a1a;
+}
+.language-graph .lg-title {
+  font-size: 36px;
+  font-weight: 700;
+}
+.language-graph .lg-tick {
+  font-size: 22px;
+  font-weight: 700;
+}
+.language-graph .lg-axis-label {
+  font-size: 22px;
+  font-weight: 700;
+}
+.language-graph .lg-legend {
+  font-size: 26px;
+  font-weight: 700;
+}
+.language-graph .lg-grid {
+  stroke: #e3dfd6;
+  stroke-width: 1.5;
+}
+.language-graph .lg-axis {
+  stroke: #1a1a1a;
+  stroke-width: 2.5;
 }
